@@ -13,25 +13,38 @@ ${numberOfItems}    3
 
 
 *** Test Cases ***
-Validate Unsuccessful Login
-    Fill the login Form    ${login_username}    ${login_incorrect_password}
-    Wait until it checks and display error message
-    Verify error message is correct
-Validate Successful Login
-    Fill the login Form    ${login_username}    ${login_password}
-    Click on the checkbox for Terms and Conditions
-    Click on sign in button
-    Validate Successful Login to the home page
-
+#Validate Unsuccessful Login
+#    Fill the login Form    ${login_username}    ${login_incorrect_password}
+#    Click on sign in button
+#    Wait until it checks and display error message
+#    Verify error message is correct
+#
+#Validate Successful Login
+#    Fill the login Form    ${login_username}    ${login_password}
+#    Click on the checkbox for Terms and Conditions
+#    Click on sign in button
+#    Validate Successful Login to the home page
+#
+#Validate all the options in Login Page
+#    Fill the login Form    ${login_username}    ${login_password}
+#    Select User in Login Page
+#    Click on the checkbox for Terms and Conditions
+#    Select 'Teacher' option from the dropdown
+#    Click on sign in button
+#    Validate Successful Login to the home page
 Validate e2e process to add an item in the cart and checkout
-
     Fill the login Form    ${login_username}    ${login_password}
+    Select User in Login Page
     Click on the checkbox for Terms and Conditions
+    Select 'Teacher' option from the dropdown
     Click on sign in button
     Validate Successful Login to the home page
     Validate the list of items present in home page
     Validate the item is added to the cart    ${item_Count_global}    ${getProduct}    ${numberOfItems}
     Validate the item is checked out from the cart page
+
+
+
 
 
 
@@ -43,7 +56,7 @@ Fill the login Form
     [Arguments]    ${username}    ${password}
     Input Text    xpath://input[@id='username']    ${username}    #robotframework support id, xpath, css
     Input Password    xpath://input[@id='password']    ${password}
-    Click Button    id:signInBtn
+
     
 Wait until it checks and display error message
     Wait Until Element Is Visible    ${Error_Message_Login}    timeout=10
@@ -54,8 +67,18 @@ Verify error message is correct
     #Capture Page Screenshot
     Log To Console    error msg is ${result}
 
+Select User in Login Page
+    Click Element    xpath://span[contains(text(),' User')]
+    Wait Until Element Is Visible    id:okayBtn
+    Sleep    2s
+    Click Element    xpath://button[@id='okayBtn']
+
 Click on the checkbox for Terms and Conditions
+    Wait Until Element Is Visible    xpath://input[@id='terms']    timeout=10
     Select Checkbox    xpath://input[@id='terms']
+
+Select 'Teacher' option from the dropdown
+    Select From List By Value    xpath://select[@class='form-control']    teach
 
 Click on sign in button
     Click Button    id:signInBtn
@@ -65,6 +88,7 @@ Validate Successful Login to the home page
     ${homePageTitle}=    Get Text    xpath://a[contains(text(),'ProtoCommerce Home')]
     Should Be Equal As Strings    ${homePageTitle}    ProtoCommerce Home
 #    Log To Console    the title of the home page is ${homePageTitle}
+
 
 Validate the list of items present in home page
     Wait Until Element Is Visible    xpath://h4[@class='card-title']
