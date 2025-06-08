@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3 (Python 3.13.2 on win32)" generated="2025-06-08T11:02:08.900088" rpa="false" schemaversion="5">
+<suite id="s1" name="loginPage2" source="C:\Users\rickb\PycharmProjects\RobotFramework_demo\tests\loginPage2.robot">
+<test id="s1-t1" name="Validate Unsuccessful Login" line="13">
+<kw name="Open the browser with the Mortage Payment url" owner="resource" type="SETUP">
+<kw name="Create Webdriver" owner="SeleniumLibrary">
+<msg time="2025-06-08T11:02:09.913057" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<arg>Chrome</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<status status="PASS" start="2025-06-08T11:02:09.912802" elapsed="4.537579"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-06-08T11:02:14.453974" level="INFO">Opening url 'https://rahulshettyacademy.com/loginpagePractise/'</msg>
+<arg>${url}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-06-08T11:02:14.453198" elapsed="0.644731"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-06-08T11:02:15.098395" elapsed="0.061498"/>
+</kw>
+<status status="PASS" start="2025-06-08T11:02:09.911191" elapsed="5.248956"/>
+</kw>
+<kw name="Fill the login Form">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-06-08T11:02:15.164188" level="INFO">Typing text 'amazon123' into text field 'xpath://input[@id='username']'.</msg>
+<arg>xpath://input[@id='username']</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-06-08T11:02:15.162234" elapsed="0.386528"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2025-06-08T11:02:15.549806" level="INFO">Typing password into text field 'xpath://input[@id='password']'.</msg>
+<msg time="2025-06-08T11:02:15.630858" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>xpath://input[@id='password']</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-06-08T11:02:15.549184" elapsed="0.187178"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-06-08T11:02:15.737299" level="INFO">Clicking button 'id:signInBtn'.</msg>
+<arg>id:signInBtn</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-06-08T11:02:15.736812" elapsed="0.198316"/>
+</kw>
+<arg>${login_username}</arg>
+<arg>${login_incorrect_password}</arg>
+<status status="PASS" start="2025-06-08T11:02:15.161092" elapsed="0.774316"/>
+</kw>
+<kw name="Wait until it checks and display error message">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${Error_Message_Login}</arg>
+<arg>timeout=10</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-06-08T11:02:15.936821" elapsed="2.171456"/>
+</kw>
+<status status="PASS" start="2025-06-08T11:02:15.936216" elapsed="2.172321"/>
+</kw>
+<kw name="Verify error message is correct">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-06-08T11:02:18.151118" level="INFO">${result} = Incorrect username/password.</msg>
+<var>${result}</var>
+<arg>${Error_Message_Login}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-06-08T11:02:18.110040" elapsed="0.041171"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${result}</arg>
+<arg>Incorrect username/password.</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-06-08T11:02:18.151536" elapsed="0.000656"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-06-08T11:02:18.777549" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-06-08T11:02:18.152587" elapsed="0.625166"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>error msg is ${result}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-06-08T11:02:18.778083" elapsed="0.000779"/>
+</kw>
+<status status="PASS" start="2025-06-08T11:02:18.109380" elapsed="0.669721"/>
+</kw>
+<kw name="Close Browser Session" owner="resource" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-06-08T11:02:18.780187" elapsed="2.242856"/>
+</kw>
+<status status="PASS" start="2025-06-08T11:02:18.779732" elapsed="2.243595"/>
+</kw>
+<status status="PASS" start="2025-06-08T11:02:09.909735" elapsed="11.114068"/>
+</test>
+<doc>To validate the login form</doc>
+<status status="PASS" start="2025-06-08T11:02:08.903184" elapsed="12.122960"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="loginPage2" id="s1" pass="1" fail="0" skip="0">loginPage2</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
