@@ -13,7 +13,7 @@ ${login_password}    learning
 
 *** Keywords ***
 Open the browser with the Mortage Payment url
-    Create Webdriver    Chrome
+    Create Webdriver    Edge
     Go To    ${url}
     Maximize Browser Window
 
