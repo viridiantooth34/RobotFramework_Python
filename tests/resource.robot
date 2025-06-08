@@ -5,9 +5,10 @@ Library    SeleniumLibrary
 Library    OperatingSystem
 *** Variables ***
 ${url}    https://rahulshettyacademy.com/loginpagePractise/
-${login_username}    amazon123
+${login_username}    rahulshettyacademy
 ${login_incorrect_password}    amazon123
-${login_password}    amazon123
+${login_password}    learning
+
 
 
 *** Keywords ***
